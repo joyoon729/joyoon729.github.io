@@ -24,7 +24,7 @@ url                      : "https://joyoon729.github.io"  # the base hostname & 
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "joyoon729/joyoon729.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/default-teaser-image.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-# breadcrumbs            : false # true, false (default)
+breadcrumbs              : false # true, false (default)
 words_per_minute         : false
 comments:
   provider               : false  # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2", "utterances", "custom"
@@ -284,9 +284,10 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
+      layout: splash
+      author_profile: false
+      read_time: false
       comments: # true
-      share: true
+      share: false
       related: true
+
