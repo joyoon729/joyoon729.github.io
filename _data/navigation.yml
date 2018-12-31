@@ -2,12 +2,10 @@
 main:
   - title: "Home"
     url: /
-  - title: "Coding"
-    url: /coding/
-  - title: "Blog"
-    url: /blog/  
-  - title: "etc"
-    url: /etc/  
+  - title: "About me"
+    url: /About-me/
+  - title: "Tags"
+    url: /tags/
   #- title: "External Link"
   #  url: https://google.com
   #  description: "go to google"
