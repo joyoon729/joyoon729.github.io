@@ -7,7 +7,7 @@ header:
   teaser: /assets/images/coding-yahak.png
 excerpt:
 ---
-<p>
+
 > HTML 문서 기본 구조
 
 ```html
@@ -23,9 +23,9 @@ excerpt:
   </body>
 </html>
 ```
-</p>
+<br>
 <hr>
-<p>
+<br>
 > 배운 태그 정리
 
 ```HTML
@@ -46,18 +46,18 @@ excerpt:
 <ol> : ordered list
 <li> : 반드시 <ul> 이나 <ol> 을 부모태그로 갖는다. --->
 ```
-</p>
+<br>
 <hr>
-<p>
+<br>
 > 원시웹
 
 **[info.cern.ch](info.cern.ch)**
 개인적으로 원시웹에 관한 설명을 들으며 실제 저 주소를 찾아가 들어가봤을때 소름이 돋았다.
-</p>
+<br>
 <hr>
-<p>
+<br>
 > client & server
 
-![client & server](assets\images\coding-yahak4~6-client_server.PNG)
+![client & server](assets\images\coding-yahak4~6-client_server.PNG)<br>
 <cite>[생활코딩](https://opentutorials.org/course/3084/18890)</cite>
-</p>
+<br>
