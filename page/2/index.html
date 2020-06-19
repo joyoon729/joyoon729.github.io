@@ -159,6 +159,235 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Network/network1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Network/network1/" class="post-title-link" itemprop="url">Network 기초 - 1. Router</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-10 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-10T00:00:00+09:00">2019-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:38:51" itemprop="dateModified" datetime="2020-06-18T17:38:51+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Network/network1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Network/network1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>making my server</strong> 프로젝트를 진행하기 위해 집에서 서버를 동작시키기 위한<br><br>네트워크에 대한 기초적인 이해가 필요함을 알았습니다.<br><br>학교 수업에서 전반적인 네트워크 이론을 통해 배웠던 내용이지만, 실제로 적용해보진 못했는데요.<br><br>Opentutorials.org 생활코딩의 <a href="https://opentutorials.org/course/3265" target="_blank" rel="noopener">WEB2 - Home Server</a> 강의를 통해<br><br>이론을 적용해보는 공부를 해보도록 합니다.<br><br><br><br><br></p>
+<hr>
+
+<blockquote>
+<p>Router (공유기)</p>
+</blockquote>
+<p><img src="/assets/images/local_network.png" alt="Local Area Network with Router"></p>
+<p><cite><a href="https://opentutorials.org/course/3265/20033" target="_blank" rel="noopener">출처: 생활코딩 - WEB2-Home server. 공유기</a></cite><br>{: .text-right}</p>
+<p>ip address 는 IPv4 기준, 4,294,967,296 개가 존재할 수 있습니다.<br><br>하지만 이 ip 주소 수는 전세계에 인터넷에 연결되는 모든 디바이스들을 할당하기엔 턱없이 부족합니다.<br><br>이러한 문제를 <em>라우터(Router)</em> 가 도움을 줍니다. 주변에서 익숙하게 본 <em>공유기<em>라고도 하는데요.<br><br>일반적으로 인터넷에 직접 *</em>닿아있는, 연결되는** 디바이스에 *public address</em> 를 부여하고 <br><br>이 디바이스를 통로로 삼아 작은 네트워크를 구성하는 구성원(디바이스)에 <em>private address</em> 를 부여하는 식입니다.<br><br><em>public address</em> 는 전세계에 한개만 존재할테지만, <em>private address</em> 는 서로 다른 로컬 네트워크 사이에서 중복해서 존재할 수 있겠죠.<br><br>그리고 이 로컬 네트워크와, 광역 네트워크 사이를 이어주는 디바이스를 라우터(Router) 라고 부릅니다.<br><br>로컬 네트워크를 <strong>LAN(Local Area Network)</strong> , 광역 네트워크를 <strong>WAN(Wide Area Network)</strong> 라고 합니다.<br><br>로컬 네트워크 안에서, 라우터가 갖는 ip address 를 특별히 <em>Gateway address</em> 또는 <em>Router address</em> 라고 부릅니다.<br><br><br><br>여기서 <em>public address</em> 와 <em>private address</em> 가 같은 값을 가지면 안되겠죠.<br><br>그래서 <em>private address</em> 는 특정 범위의 주소들만 할당하도록 약속되어있습니다.<br><br><br></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>ip address 범위</strong></th>
+<th align="center"><strong>ip address 수</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">10.0.0.0 ~ 10.255.255.255</td>
+<td align="center">16,777,216 개</td>
+</tr>
+<tr>
+<td align="center">172.16.0.0 ~ 172.31.255.255</td>
+<td align="center">1,048,576 개</td>
+</tr>
+<tr>
+<td align="center">192.168.0.0 ~ 192.168.255.255</td>
+<td align="center">65,436 개</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Network/network1/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_mysql_study4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Web/nodejs_mysql_study4/" class="post-title-link" itemprop="url">Node.js & MySQL Study 4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-02-09T00:00:00+09:00">2019-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:40:40" itemprop="dateModified" datetime="2020-06-18T17:40:40+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Web/nodejs_mysql_study4/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_mysql_study4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>목표</p>
+</blockquote>
+<p>Database 에 있는 <code>author</code> 테이블을 이용해 저자(author) 관리창을 구현합니다.<br><br>아래는 완성된 저자 관리창 입니다.<br><br><img src="/assets/images/author_manage.PNG" alt="author_manage"><br><br><br>홈페이지에서 <strong>author</strong> 링크를 클릭하면 저자 관리창으로 진입합니다.<br><br>저자 관리창에서 저자 리스트를 바로 볼 수 있고, 수정 및 삭제를 할 수 있습니다.<br><br>하단에 저자 생성을 위한 form 이 있고, 이 form 은 수정 버튼을 누를 시 수정을 위한 form 으로 대체됩니다.<br><br><br><br>이러한 기능을 구현하는 코드를 작성해 보겠습니다.<br><br><br><br><br></p>
+<hr>
+
+<blockquote>
+<p>저자 관리창 만들기</p>
+</blockquote>
+<p><code>template.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTML:<span class="function"><span class="keyword">function</span>(<span class="params">title, list, body, control</span>)</span>&#123;</span><br><span class="line">   &lt;body&gt;</span><br><span class="line">       &lt;h1&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">       &lt;a href="/</span>author<span class="string">"&gt;author&lt;/a&gt; // 저자 관리창 링크 생성</span></span><br><span class="line"><span class="string">       $&#123;list&#125;</span></span><br><span class="line"><span class="string">       $&#123;control&#125;</span></span><br><span class="line"><span class="string">       $&#123;body&#125;</span></span><br><span class="line"><span class="string">   &lt;/body&gt;</span></span><br><span class="line"><span class="string"> &#125;</span></span><br></pre></td></tr></table></figure>
+<p>template에서 기본적인 창 구성을 담당하는 HTML 메소드에 저자 관리창으로 향하는 링크를 생성합니다.저자 링크는 <code>/author</code> 로 하겠습니다.<br><br><br><br><code>main.js</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Web/nodejs_mysql_study4/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_mysql_study3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,111 +599,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Database/mysql_study2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jo Yoon GI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="joyoon">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Database/mysql_study2/" class="post-title-link" itemprop="url">MySQL Study 2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2019-01-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-31T00:00:00+09:00">2019-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-06-18 17:38:35" itemprop="dateModified" datetime="2020-06-18T17:38:35+09:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/Database/mysql_study2/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Database/mysql_study2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>관계형 데이터베이스 (Relational Database)</p>
-</blockquote>
-<p>MySQL 은 관계형 데이터베이스 중의 하나라고 할 수 있습니다.<br><br>관계형 데이터베이스의 특징은 정보를 하나의 테이블에 담는 것이 아니라<br><br>목적에 따라 여러개의 테이블에 <strong>나누어</strong> 담는 것인데요.<br><br>예를 들어 보겠습니다.<br><br><br></p>
-<p><img src="/assets/images/relational_db1.png" alt="nonerelational_db"><br><cite><a href="https://opentutorials.org/course/3161/19544" target="_blank" rel="noopener">출처: Opentutorials - DATABASE2 MySQL - 15.관계형 데이터베이스의 필요성</a></cite><br>{: .text-right}<br>정보를 이처럼 한 테이블에 담는다면, 일단 사용자가 보기에는 편할 것입니다.<br><br>모든 정보를 이 한 테이블에서 얻어낼 수 있을테니까요.<br><br>하지만 데이터를 관리하는 관리자 입장에서는 이런 테이블은 유지/보수 하기가 어려울 뿐더러,<br><br>중복되는 정보들에 의미 부여를 하기가 어렵습니다.<br><br><br><br>만약 위의 테이블에서 ‘egoing’ 이라는 글쓴이 정보를 ‘EGOING’ 이라고 바꿔야한다면<br><br>id가 1,2,5인 테이블을 하나하나 바꿔야 합니다.<br><br>만약 이 테이블에 더 많은 정보가 들어있었다면 더 많은 수정 작업이 필요했을 것입니다.<br><br>또한 ‘egoing’ 이라는 또다른 동명이인 글쓴이가 존재한다면, 이 테이블을 통해서는 동일한 글쓴이인지 판별하기가 어렵습니다.<br><br><br><br><br></p>
-<p><img src="/assets/images/relational_db2.png" alt="relational_db"><br><cite><a href="https://opentutorials.org/course/3161/19544" target="_blank" rel="noopener">출처: Opentutorials - DATABASE2 MySQL - 15.관계형 데이터베이스의 필요성</a></cite><br>{: .text-right}<br>하지만 위와같이 테이블을 <strong>author</strong> 테이블과 <strong>topic</strong> 테이블로 나눈다면 문제를 해결할 수 있습니다.<br><br><strong>topic</strong> 테이블의 author 필드는 author_id 필드로 대체되었고, 본래 <strong>topic</strong> 테이블에 담겨있던 author 필드와 profile 필드의 정보들은 <strong>author</strong> 테이블로 옮겨졌습니다.<br><br>그리고 <strong>author</strong> 테이블에 id 필드를 만들어 <strong>topic</strong> 의 author_id 와 대응되게 하였습니다.<br><br><br><br>이제 관리자는 ‘egoing’ 이라는 글쓴이 정보를 ‘EGOING’ 으로 수정하려 할때<br><br>여러번의 수정없이 <strong>author</strong> 테이블의 id=1 에 해당하는 ‘egoing’ 만 수정하면 <strong>topic</strong> 테이블 전체에 수정하는 효과를 가져올 수 있습니다.<br><br>또한 만약 ‘egoing’ 이라는 이름을 가진 동명이인이 글을 쓴다고 하면, <strong>author</strong> 테이블에 id=4이고 ‘egoing’ 이름을 가진 새로운 레코드를 추가함으로써 의미적으로 ‘id=1 egoing’ 과 ‘id=4 egoing’ 을 구분할 수 있을 것입니다.<br><br><br><br><br><br>이러한 관계형 데이터베이스의 특징을 살펴보면서 이전에 JavaScript 공부를 하며 느꼈던 ‘함수의 필요성’과 많이 유사함을 느낄 수 있었습니다. 유지/보수와 의미부여 측면에 있어서요.<br><br>전부 똑같다고 볼 순 없겠지만, 지금은 이런식으로 이해하면 도움이 될 것 같습니다.<br><br><br><br><br></p>
-<hr>
-> JOIN 사용해보기
-
-<p>이제 테이블을 나누었으니, 데이터 관리자 입장에서는 한결 수월해졌습니다.<br><br>하지만 사용자 입장에서는 오히려 불편해졌지요. 하나였던 테이블을 두개에 걸쳐 번갈아가며 정보를 확인해야 하니까요.<br><br>이를 해소할 방법이 있습니다. <strong><em>‘JOIN’</em></strong> 입니다.<br><br>JOIN 은 두 개의 테이블 사이에 공통되는 정보를 바탕으로 합성하는것입니다.<br><br>일단 사용법은 ‘SELECT’ 문에 JOIN문을 추가하는 형식인데,<br><br><code>SELECT * FROM [테이블명] JOIN [조인할 테이블명] ON [조건절]</code><br><br>이렇습니다. 예를 들어보겠습니다.<br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM topic JOIN author ON topic.author_id = author.id;</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br><span class="line">| id | title      | description       | created             | author_id | id   | name   | profile                   |</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br><span class="line">|  1 | MySQL      | MySQL is ...      | 2019-01-30 08:00:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  2 | Oracle     | Oracle is ...     | 2019-01-30 08:01:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  5 | MongoDB    | MongoDB is ...    | 2019-01-30 08:02:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  3 | SQL Server | SQL Server is ... | 2019-01-30 08:03:00 |         2 |    2 | duru   | data administrator        |</span><br><span class="line">|  4 | PostgreSQL | PostgreSQL is ... | 2019-01-30 08:04:00 |         3 |    3 | taeho  | data scientist, developer |</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Database/mysql_study2/#more" rel="contents">
-                더 읽어보기 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_mysql_study1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -561,6 +685,111 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/Web/nodejs_mysql_study1/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Database/mysql_study2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Database/mysql_study2/" class="post-title-link" itemprop="url">MySQL Study 2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-01-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-31T00:00:00+09:00">2019-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:38:35" itemprop="dateModified" datetime="2020-06-18T17:38:35+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Database/mysql_study2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Database/mysql_study2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>관계형 데이터베이스 (Relational Database)</p>
+</blockquote>
+<p>MySQL 은 관계형 데이터베이스 중의 하나라고 할 수 있습니다.<br><br>관계형 데이터베이스의 특징은 정보를 하나의 테이블에 담는 것이 아니라<br><br>목적에 따라 여러개의 테이블에 <strong>나누어</strong> 담는 것인데요.<br><br>예를 들어 보겠습니다.<br><br><br></p>
+<p><img src="/assets/images/relational_db1.png" alt="nonerelational_db"><br><cite><a href="https://opentutorials.org/course/3161/19544" target="_blank" rel="noopener">출처: Opentutorials - DATABASE2 MySQL - 15.관계형 데이터베이스의 필요성</a></cite><br>{: .text-right}<br>정보를 이처럼 한 테이블에 담는다면, 일단 사용자가 보기에는 편할 것입니다.<br><br>모든 정보를 이 한 테이블에서 얻어낼 수 있을테니까요.<br><br>하지만 데이터를 관리하는 관리자 입장에서는 이런 테이블은 유지/보수 하기가 어려울 뿐더러,<br><br>중복되는 정보들에 의미 부여를 하기가 어렵습니다.<br><br><br><br>만약 위의 테이블에서 ‘egoing’ 이라는 글쓴이 정보를 ‘EGOING’ 이라고 바꿔야한다면<br><br>id가 1,2,5인 테이블을 하나하나 바꿔야 합니다.<br><br>만약 이 테이블에 더 많은 정보가 들어있었다면 더 많은 수정 작업이 필요했을 것입니다.<br><br>또한 ‘egoing’ 이라는 또다른 동명이인 글쓴이가 존재한다면, 이 테이블을 통해서는 동일한 글쓴이인지 판별하기가 어렵습니다.<br><br><br><br><br></p>
+<p><img src="/assets/images/relational_db2.png" alt="relational_db"><br><cite><a href="https://opentutorials.org/course/3161/19544" target="_blank" rel="noopener">출처: Opentutorials - DATABASE2 MySQL - 15.관계형 데이터베이스의 필요성</a></cite><br>{: .text-right}<br>하지만 위와같이 테이블을 <strong>author</strong> 테이블과 <strong>topic</strong> 테이블로 나눈다면 문제를 해결할 수 있습니다.<br><br><strong>topic</strong> 테이블의 author 필드는 author_id 필드로 대체되었고, 본래 <strong>topic</strong> 테이블에 담겨있던 author 필드와 profile 필드의 정보들은 <strong>author</strong> 테이블로 옮겨졌습니다.<br><br>그리고 <strong>author</strong> 테이블에 id 필드를 만들어 <strong>topic</strong> 의 author_id 와 대응되게 하였습니다.<br><br><br><br>이제 관리자는 ‘egoing’ 이라는 글쓴이 정보를 ‘EGOING’ 으로 수정하려 할때<br><br>여러번의 수정없이 <strong>author</strong> 테이블의 id=1 에 해당하는 ‘egoing’ 만 수정하면 <strong>topic</strong> 테이블 전체에 수정하는 효과를 가져올 수 있습니다.<br><br>또한 만약 ‘egoing’ 이라는 이름을 가진 동명이인이 글을 쓴다고 하면, <strong>author</strong> 테이블에 id=4이고 ‘egoing’ 이름을 가진 새로운 레코드를 추가함으로써 의미적으로 ‘id=1 egoing’ 과 ‘id=4 egoing’ 을 구분할 수 있을 것입니다.<br><br><br><br><br><br>이러한 관계형 데이터베이스의 특징을 살펴보면서 이전에 JavaScript 공부를 하며 느꼈던 ‘함수의 필요성’과 많이 유사함을 느낄 수 있었습니다. 유지/보수와 의미부여 측면에 있어서요.<br><br>전부 똑같다고 볼 순 없겠지만, 지금은 이런식으로 이해하면 도움이 될 것 같습니다.<br><br><br><br><br></p>
+<hr>
+> JOIN 사용해보기
+
+<p>이제 테이블을 나누었으니, 데이터 관리자 입장에서는 한결 수월해졌습니다.<br><br>하지만 사용자 입장에서는 오히려 불편해졌지요. 하나였던 테이블을 두개에 걸쳐 번갈아가며 정보를 확인해야 하니까요.<br><br>이를 해소할 방법이 있습니다. <strong><em>‘JOIN’</em></strong> 입니다.<br><br>JOIN 은 두 개의 테이블 사이에 공통되는 정보를 바탕으로 합성하는것입니다.<br><br>일단 사용법은 ‘SELECT’ 문에 JOIN문을 추가하는 형식인데,<br><br><code>SELECT * FROM [테이블명] JOIN [조인할 테이블명] ON [조건절]</code><br><br>이렇습니다. 예를 들어보겠습니다.<br></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM topic JOIN author ON topic.author_id = author.id;</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br><span class="line">| id | title      | description       | created             | author_id | id   | name   | profile                   |</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br><span class="line">|  1 | MySQL      | MySQL is ...      | 2019-01-30 08:00:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  2 | Oracle     | Oracle is ...     | 2019-01-30 08:01:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  5 | MongoDB    | MongoDB is ...    | 2019-01-30 08:02:00 |         1 |    1 | egoing | developer                 |</span><br><span class="line">|  3 | SQL Server | SQL Server is ... | 2019-01-30 08:03:00 |         2 |    2 | duru   | data administrator        |</span><br><span class="line">|  4 | PostgreSQL | PostgreSQL is ... | 2019-01-30 08:04:00 |         3 |    3 | taeho  | data scientist, developer |</span><br><span class="line">+----+------------+-------------------+---------------------+-----------+------+--------+---------------------------+</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Database/mysql_study2/#more" rel="contents">
                 더 읽어보기 &raquo;
               </a>
             </div>
@@ -1000,216 +1229,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jo Yoon GI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="joyoon">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Web/nodejs_study4/" class="post-title-link" itemprop="url">Node.js Study 4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2019-01-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-07T00:00:00+09:00">2019-01-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-06-18 17:46:28" itemprop="dateModified" datetime="2020-06-18T17:46:28+09:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/Web/nodejs_study4/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_study4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>목표</p>
-</blockquote>
-<p><code>_data</code> 디렉토리에 생성된 글을 수정 및 삭제할 수 있도록 합니다.<br><br><br><br></p>
-<hr>
-> 수정 및 삭제 링크 만들기
-
-<p>생성 링크를 만들어보았으니 수정 및 삭제 링크도 같은 방법으로 만들 수 있습니다.<br><br><code>control</code> 변수에 update 와 delete 링크를 추가하면 되는데, delete 링크의 경우에는 주의사항이 있으니 참고합니다.<br><br>먼저 update 부터 시작해보겠습니다.<br><br><code>&gt; main.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> control = <span class="string">`</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">&lt;a href="/update?id=<span class="subst">$&#123;title&#125;</span>"&gt;update&lt;/a&gt;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-<p><code>&lt;a&gt;</code> 태그를 이용해 update 링크를 만들고, 원하는 특정 글을 수정해야 하므로 queryString 에 제목 <code>${title}</code> 을 담아둡니다.<br><br>이러면 update 링크는 완성입니다. 이 링크에서 수정작업을 할 수 있는 코드를 추가하면 됩니다.<br><br><br><br><br>그런데 delete 는 이런 방식으로 삭제 링크를 만들면 안됩니다. update 링크와 마찬가지로 queryString 이 delete 에 적용된다면, 사용자가 <strong><a href="http://localhost:4000/delete?id=${제목}" target="_blank" rel="noopener">http://localhost:4000/delete?id=${제목}</a></strong> 와 같이 url을 임의로 수정해 접속하는것만으로도 삭제 작업이 이루어질 수 있기 때문입니다.<br><br>때문에 delete 는 queryString 이 url에 노출되는 get 방식이 아닌 post 방식으로 id 값을 보이지않게 서버로 건네주기 위해 <code>&lt;form method=&quot;post&quot;&gt;</code> 태그를 이용합니다.<br><br><br><code>&gt; main.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> control = <span class="string">`</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">&lt;form action="/delete_process" method="post"&gt;</span></span><br><span class="line"><span class="string">  &lt;input type="hidden" name="id" value="<span class="subst">$&#123;title&#125;</span>"&gt;</span></span><br><span class="line"><span class="string">  &lt;input type="submit" value="delete"</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Web/nodejs_study4/#more" rel="contents">
-                더 읽어보기 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jo Yoon GI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="joyoon">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Web/nodejs_study3/" class="post-title-link" itemprop="url">Node.js Study 3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2019-01-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-05T00:00:00+09:00">2019-01-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-06-18 17:46:24" itemprop="dateModified" datetime="2020-06-18T17:46:24+09:00">2020-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/Web/nodejs_study3/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_study3/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>목표</p>
-</blockquote>
-<p>사용자가 서버 내의 <code>_data</code> 디렉토리에 새 글을 생성할 수 있고<br><br>서버는 생성된 새 글을 페이지에 반영하도록 합니다.<br><br><br><br></p>
-<hr>
-> 글생성 UI 만들기
-
-<p>사용자가 글을 써 넣을 공간을 만듭니다.<br><strong>form</strong> 태그를 이용합니다.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://localhost:4000/create_process"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">placeholder</span>=<span class="string">"제목을 입력하세요"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"본문을 입력하세요"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>form</strong> 의 action 속성은 입력된 데이터를 action 속성의 주소로 보내는 역할을 하고, <code>method=&quot;post&quot;</code> 는 post 방식으로 url에 노출없이 데이터를 보내겠다는 뜻입니다.<br><br>post의 반대되는 방식으론 get 방식이 있는데 따로 속성을 지정해주지 않으면 기본값으로 get 방식을 따릅니다.<br></p>
-<p><i style="font-size:1.5em;" class="fas fa-exclamation-triangle"></i> 서버를 향하는 정보가 url 에 노출되면 안되기 때문에 일반적으로 서버에 정보를 줄땐 post 방식을 사용합니다.<br>{: .notice–danger}<br><code>&gt; 완성된 UI</code><br><br><img src="/assets/images/html_form.PNG" alt="html-form"><br><br><br><br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Web/nodejs_study3/#more" rel="contents">
-                더 읽어보기 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1279,7 +1298,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>

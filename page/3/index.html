@@ -159,6 +159,216 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Web/nodejs_study4/" class="post-title-link" itemprop="url">Node.js Study 4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-01-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-07T00:00:00+09:00">2019-01-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:46:28" itemprop="dateModified" datetime="2020-06-18T17:46:28+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Web/nodejs_study4/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_study4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>목표</p>
+</blockquote>
+<p><code>_data</code> 디렉토리에 생성된 글을 수정 및 삭제할 수 있도록 합니다.<br><br><br><br></p>
+<hr>
+> 수정 및 삭제 링크 만들기
+
+<p>생성 링크를 만들어보았으니 수정 및 삭제 링크도 같은 방법으로 만들 수 있습니다.<br><br><code>control</code> 변수에 update 와 delete 링크를 추가하면 되는데, delete 링크의 경우에는 주의사항이 있으니 참고합니다.<br><br>먼저 update 부터 시작해보겠습니다.<br><br><code>&gt; main.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> control = <span class="string">`</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">&lt;a href="/update?id=<span class="subst">$&#123;title&#125;</span>"&gt;update&lt;/a&gt;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;a&gt;</code> 태그를 이용해 update 링크를 만들고, 원하는 특정 글을 수정해야 하므로 queryString 에 제목 <code>${title}</code> 을 담아둡니다.<br><br>이러면 update 링크는 완성입니다. 이 링크에서 수정작업을 할 수 있는 코드를 추가하면 됩니다.<br><br><br><br><br>그런데 delete 는 이런 방식으로 삭제 링크를 만들면 안됩니다. update 링크와 마찬가지로 queryString 이 delete 에 적용된다면, 사용자가 <strong><a href="http://localhost:4000/delete?id=${제목}" target="_blank" rel="noopener">http://localhost:4000/delete?id=${제목}</a></strong> 와 같이 url을 임의로 수정해 접속하는것만으로도 삭제 작업이 이루어질 수 있기 때문입니다.<br><br>때문에 delete 는 queryString 이 url에 노출되는 get 방식이 아닌 post 방식으로 id 값을 보이지않게 서버로 건네주기 위해 <code>&lt;form method=&quot;post&quot;&gt;</code> 태그를 이용합니다.<br><br><br><code>&gt; main.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> control = <span class="string">`</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">&lt;form action="/delete_process" method="post"&gt;</span></span><br><span class="line"><span class="string">  &lt;input type="hidden" name="id" value="<span class="subst">$&#123;title&#125;</span>"&gt;</span></span><br><span class="line"><span class="string">  &lt;input type="submit" value="delete"</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Web/nodejs_study4/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Web/nodejs_study3/" class="post-title-link" itemprop="url">Node.js Study 3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-01-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-05T00:00:00+09:00">2019-01-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:46:24" itemprop="dateModified" datetime="2020-06-18T17:46:24+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Web/nodejs_study3/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_study3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>목표</p>
+</blockquote>
+<p>사용자가 서버 내의 <code>_data</code> 디렉토리에 새 글을 생성할 수 있고<br><br>서버는 생성된 새 글을 페이지에 반영하도록 합니다.<br><br><br><br></p>
+<hr>
+> 글생성 UI 만들기
+
+<p>사용자가 글을 써 넣을 공간을 만듭니다.<br><strong>form</strong> 태그를 이용합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://localhost:4000/create_process"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">placeholder</span>=<span class="string">"제목을 입력하세요"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"본문을 입력하세요"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>form</strong> 의 action 속성은 입력된 데이터를 action 속성의 주소로 보내는 역할을 하고, <code>method=&quot;post&quot;</code> 는 post 방식으로 url에 노출없이 데이터를 보내겠다는 뜻입니다.<br><br>post의 반대되는 방식으론 get 방식이 있는데 따로 속성을 지정해주지 않으면 기본값으로 get 방식을 따릅니다.<br></p>
+<p><i style="font-size:1.5em;" class="fas fa-exclamation-triangle"></i> 서버를 향하는 정보가 url 에 노출되면 안되기 때문에 일반적으로 서버에 정보를 줄땐 post 방식을 사용합니다.<br>{: .notice–danger}<br><code>&gt; 완성된 UI</code><br><br><img src="/assets/images/html_form.PNG" alt="html-form"><br><br><br><br></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Web/nodejs_study3/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -840,7 +1050,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
