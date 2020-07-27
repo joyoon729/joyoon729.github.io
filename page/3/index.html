@@ -159,6 +159,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jo Yoon GI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="joyoon">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Web/nodejs_study6/" class="post-title-link" itemprop="url">Node.js Study 6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-01-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-15T00:00:00+09:00">2019-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-06-18 17:46:35" itemprop="dateModified" datetime="2020-06-18T17:46:35+09:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Web/nodejs_study6/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Web/nodejs_study6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>목표</p>
+</blockquote>
+<p>사용자로부터 서버로 어떠한 입력을 받을때에 발생할 수 있는 보안 위험을 방지하는 법을 알아보겠습니다. <br><br><br><br><br></p>
+<hr>
+> 상황 가정
+
+<p>입력에 의한 보안 위협이 어떤식으로 발생하는지 알아보기 위해 특정 상황을 가정해 설명해보겠습니다.<br><br><br><br><strong><em>어떤 웹 애플리케이션</em></strong> 이 있습니다.<br><br>사용자로부터 파일 제목을 입력받으면 정해진 디렉토리 안에 있는 파일의 내용을 표시해주는 <strong><em>어떤 웹 애플리케이션</em></strong>.<br><br><br><br><br><img src="/assets/images/dir_tree.PNG" alt="directory_tree"><br><br><br>이런 디렉토리 트리를 가지고 있구요.<br><br>security, data 디렉토리를 갖고있고, main.js 로 실행합니다.<br></p>
+<p>이 <strong><em>어떤 웹 애플리케이션</em></strong> 은 사용자로부터 파일 제목을 입력받으면 <br><br><code>data/</code> 디렉토리 안에 있는 파일의 내용을 표시해줍니다.<br><br><br><br>그런데 이 <strong><em>어떤 웹 애플리케이션</em></strong> 은 사용자 정보를 담은 중요한 파일도 갖고 있습니다.<br><br><code>security/users.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--- 사용자들의 ID/PW 가 담긴 파일 ---</span><br><span class="line">Joyoon : 1q2w3e4r</span><br><span class="line">Nodejs : passssword12</span><br><span class="line">Javascript : hellojs!@</span><br></pre></td></tr></table></figure>
+<p>이렇게 <code>security/</code> 디렉토리에 <code>users.txt</code> 파일의 형태로 사용자들의 ID/PW 가 저장되어 있다고 해봅시다.<br><br><br><br><br><br><br><br><img src="/assets/images/enter_title.PNG" alt="enter title"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Web/nodejs_study6/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="http://joyoon729.githu.io/Web/nodejs_study5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,20 +1261,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">카테고리</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
